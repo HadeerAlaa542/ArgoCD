@@ -1,20 +1,19 @@
-apiversion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
-metadata:        #Metadata about the resource
-  name: myapp    #The name of the Deployment
-spec:            #specification of the Deployment
-  selector: 
-    matchLabaels:    #This connects the Deployment to the Pods it manage
+metadata:
+  name: myapp
+spec:
+  selector:
+    matchLabels:
       app: myapp
   replicas: 2
-  template:          #Defines the Pod template — what each Pod should look like
+  template:
     metadata:
-      labels: 
+      labels:
         app: myapp
-    spec: 
+    spec:
       containers:
-      - name: myapp     # Container name 
+      - name: myapp
         image: nanajanashia/argocd-app:1.2
-        ports: 
-        - containerport: 6060   #The port the application is exposing inside the container.
-  
+        ports:
+        - containerPort: 6060  
