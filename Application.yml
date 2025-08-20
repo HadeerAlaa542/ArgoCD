@@ -17,7 +17,9 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true    # this option to create the name space "myapp" automatically if it doesn't exist
-    automated:   #attribute to enable automatic sync any changes in the git repo
+    automated:   #attribute to enable automatic sync any changes in the git repo "check the repo every 3 min to poll the changes"
       selfHeal: true    # configure argocd to undo or overwrite any manual changes on the cluster to match Git.
       prune: true   # to enable argo cd to if a resource exists in the cluster but was removed from Git, Argo CD will delete it.
  
+# Note: if you want to apply and sync the changes with the cluster as soon a something changes in the git repo you can configure a webhook integration bet. git repo and argcd 
+  
