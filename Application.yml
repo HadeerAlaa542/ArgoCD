@@ -11,13 +11,13 @@ spec:
     targetRevision: HEAD
     path: Manifests
   destination: 
-    server: https://kubernetes.default.svc
+    server: https://kubernetes.default.svc     #Internal svc name of kubernetes api server  
     namespace: myapp
 
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
-
-    automated:
-      selfHeal: true
-      prune: true
+    - CreateNamespace=true    # this option to create the name space "myapp" automatically if it doesn't exist
+    automated:   #attribute to enable automatic sync any changes in the git repo
+      selfHeal: true    # configure argocd to undo or overwrite any manual changes on the cluster to match Git.
+      prune: true   # to enable argo cd to if a resource exists in the cluster but was removed from Git, Argo CD will delete it.
+ 
